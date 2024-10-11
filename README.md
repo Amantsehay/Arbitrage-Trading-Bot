@@ -20,8 +20,8 @@ Installation
 
     bash
 
-git clone https://github.com/yourusername/arbitrage-trading-bot.git
-cd arbitrage-trading-bot
+git clone https://github.com/Amantsehay/Arbitrage-Trading-Bot.git
+cd Arbitrage-Trading-Bot
 
 Install dependencies:
 
