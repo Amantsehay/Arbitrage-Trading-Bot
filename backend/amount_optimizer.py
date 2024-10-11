@@ -68,16 +68,12 @@ class AmtOptimizer(Model):
         
     def _set_constraints(self):
         self.add_constraint(self.sum(self.y) == self.path_n)
-        # 2. you can only choose one price level from each step's order book
         self.add_constraints(self.sum(self.y[i, :]) <= 1 for i in range(self.path_n))
-        # only the amount at the chosen price level could be larger than 0
         self.add_constraints(
             self.x[i, j] <= self.big_m * self.y[i, j] for i in range(self.path_n) for j in range(self.orderbook_n))
-        # 3. amount for order should be smaller than given order book amount
         self.add_constraints(
             self.z[i, j] <= self.trade_amt_ptc * self.amt_matrix[i, j] for i in range(self.path_n) for j in
             range(self.orderbook_n))
-        
         
         first_coin_bal = self.balance_vol[self.path[0]][self.path[0][0]]
         
